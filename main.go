@@ -66,6 +66,7 @@ func main() {
 		api.GET("/memos", handlers.ListMemos)
 		api.POST("/memos", handlers.CreateMemo)
 
+		api.POST("/nuclear-reset", handlers.NuclearReset)
 		api.POST("/seed", func(c *gin.Context) {
 			config.SeedDatabase()
 			c.JSON(http.StatusOK, gin.H{"message": "Content Seeded Successfully"})

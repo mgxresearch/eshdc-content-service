@@ -27,5 +27,5 @@ func InitDB() {
 	fmt.Println("Content Database connected")
 
 	// Migrate models
-	DB.AutoMigrate(&models.News{}, &models.PageContent{}, &models.Media{}, &models.Setting{}, &models.HeroSlide{}, &models.Job{}, &models.Memo{}, &models.ContactMessage{})
+	DB.AutoMigrate(&models.News{}, &models.PageContent{}, &models.Media{}, &models.Setting{}, &models.HeroSlide{}, &models.Job{}, &models.Memo{}, &models.ContactMessage{}, &models.SystemSetting{}, &models.DataSeed{})
 }

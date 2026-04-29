@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/eshdc/content-service/config"
 	"github.com/eshdc/content-service/models"
@@ -294,4 +295,23 @@ func getMockMode() bool {
 		return setting.Value == "\"true\"" || setting.Value == "true"
 	}
 	return false
+}
+
+
+
+func NuclearReset(c *gin.Context) {
+	// config.DB.Exec("DELETE FROM news") // User wants to keep news
+	// config.DB.Exec("DELETE FROM hero_slides") // User wants to keep slides
+	config.DB.Exec("DELETE FROM memos")
+	config.DB.Exec("DELETE FROM contact_messages")
+	config.DB.Exec("DELETE FROM page_contents WHERE is_mock = true")
+
+	// Set Production Live Flag locally
+	var setting models.SystemSetting
+	config.DB.Where("key = ?", "production_live").FirstOrCreate(&setting, models.SystemSetting{Key: "production_live"})
+	setting.Value = "true"
+	setting.UpdatedAt = time.Now()
+	config.DB.Save(&setting)
+
+	c.JSON(http.StatusOK, gin.H{"message": "Memos and Messages purged. Slides and News preserved. Production mode locked."})
 }
