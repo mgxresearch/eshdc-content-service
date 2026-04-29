@@ -89,6 +89,7 @@ type Memo struct {
 	Recipients      string         `json:"recipients"` // Comma separated emails
 	RecipientNames  string         `json:"recipient_names"` // Comma separated names
 	Category        string         `json:"category"`
+	Priority        string         `json:"priority"`
 	Type            string         `gorm:"default:'internal'" json:"type"` // internal, external
 	Status          string         `gorm:"default:'Official'" json:"status"`
 	RefFile     string         `json:"ref_file"`

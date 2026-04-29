@@ -151,5 +151,40 @@ func SeedDatabase() {
 		}
 	}
 
-	fmt.Println("✅ Settings, Metadata & Jobs seeded")
+	// Seed Memos
+	memos := []models.Memo{
+		{
+			Serial: "ESHDC/MEMO/2026/001",
+			Subject: "Digitization Phase 1 Completion",
+			Content: "<h1>Phase 1 Complete</h1><p>We have successfully digitized all files for Independence Layout. Registry staff should now begin verification of financial metadata.</p>",
+			SenderName: "Admin Office",
+			SenderEmail: "admin@eshdc.gov.ng",
+			Recipients: "staff@eshdc.gov.ng",
+			RecipientNames: "All Staff",
+			Category: "General Administration",
+			Priority: "High",
+			Status: "Official",
+		},
+		{
+			Serial: "ESHDC/MEMO/2026/002",
+			Subject: "New Security Protocol for Land Transfers",
+			Content: "<h1>Security Update</h1><p>From Monday, all land transfers must be initiated digitally. Physical submissions will no longer be accepted without a portal tracking ID.</p>",
+			SenderName: "Legal Department",
+			SenderEmail: "legal@eshdc.gov.ng",
+			Recipients: "registry@eshdc.gov.ng",
+			RecipientNames: "Registry Officers",
+			Category: "Legal & Secretarial",
+			Priority: "Urgent",
+			Status: "Official",
+		},
+	}
+
+	for _, m := range memos {
+		var existing models.Memo
+		if err := DB.Where("serial = ?", m.Serial).First(&existing).Error; err != nil {
+			DB.Create(&m)
+		}
+	}
+
+	fmt.Println("✅ Settings, Metadata, Jobs & Memos seeded")
 }
