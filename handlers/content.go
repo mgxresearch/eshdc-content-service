@@ -300,10 +300,8 @@ func getMockMode() bool {
 
 
 func NuclearReset(c *gin.Context) {
-	// config.DB.Exec("DELETE FROM news") // User wants to keep news
-	// config.DB.Exec("DELETE FROM hero_slides") // User wants to keep slides
-	config.DB.Exec("DELETE FROM memos")
-	config.DB.Exec("DELETE FROM contact_messages")
+	// User wants to keep News and Hero Slides
+	config.DB.Exec("TRUNCATE TABLE memos, contact_messages RESTART IDENTITY CASCADE")
 	config.DB.Exec("DELETE FROM page_contents WHERE is_mock = true")
 
 	// Set Production Live Flag locally
