@@ -13,7 +13,7 @@ import (
 func main() {
 	config.InitDB()
 
-	if os.Getenv("SEED") == "true" {
+	if os.Getenv("SEED_DB") == "true" {
 		config.SeedDatabase()
 	}
 
