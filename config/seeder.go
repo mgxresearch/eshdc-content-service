@@ -11,21 +11,21 @@ func SeedDatabase() {
 	// 0. Hero Slides
 	slides := []models.HeroSlide{
 		{
-			ImageURL: "/images/hero1.png",
+			ImageURL: "/uploads/hero1.png",
 			Tag:      "Digital Land Allocation",
 			Title:    "68+ Massive Estates: Digitizing Enugu",
 			Description: "The ESHDC digital transformation is now live with 68+ premium estates and 34,000+ digitized plots across the state.",
 			Order:    1,
 		},
 		{
-			ImageURL: "/images/hero2.png",
+			ImageURL: "/uploads/hero2.png",
 			Tag:      "Premium Living",
 			Title:    "Centenary City: The Future of Enugu",
 			Description: "Experience smart city living in Centenary City. Secure your plot through our 100% verified digital portal.",
 			Order:    2,
 		},
 		{
-			ImageURL: "/images/hero3.png",
+			ImageURL: "/uploads/hero3.png",
 			Tag:      "Estate Vault",
 			Title:    "Registry-Safe: Digital Property Folders",
 			Description: "Every asset is protected in a centralized digital vault. Transparent, secure, and fully traceable.",
