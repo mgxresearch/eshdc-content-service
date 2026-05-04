@@ -13,9 +13,7 @@ import (
 func main() {
 	config.InitDB()
 
-	if os.Getenv("SEED_DB") == "true" {
-		// config.SeedDatabase()
-	}
+	// SEEDERS PERMANENTLY DISABLED — Production Policy
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -67,10 +65,6 @@ func main() {
 		api.POST("/memos", handlers.CreateMemo)
 
 		api.POST("/nuclear-reset", handlers.NuclearReset)
-		api.POST("/seed", func(c *gin.Context) {
-			// config.SeedDatabase()
-			c.JSON(http.StatusOK, gin.H{"message": "Content Seeded Successfully"})
-		})
 	}
 
 	log.Printf("Content Service starting on port %s", port)
