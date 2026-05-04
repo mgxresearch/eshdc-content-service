@@ -14,7 +14,7 @@ func main() {
 	config.InitDB()
 
 	if os.Getenv("SEED_DB") == "true" {
-		config.SeedDatabase()
+		// config.SeedDatabase()
 	}
 
 	port := os.Getenv("PORT")
@@ -68,7 +68,7 @@ func main() {
 
 		api.POST("/nuclear-reset", handlers.NuclearReset)
 		api.POST("/seed", func(c *gin.Context) {
-			config.SeedDatabase()
+			// config.SeedDatabase()
 			c.JSON(http.StatusOK, gin.H{"message": "Content Seeded Successfully"})
 		})
 	}
