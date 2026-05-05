@@ -216,6 +216,7 @@ func CreateMemo(c *gin.Context) {
 						"memo_serial": memo.Serial,
 						"category":    memo.Category,
 						"content":     memo.Content,
+						"date":        time.Now().Format("02 Jan 2006"),
 					},
 				}
 				jsonPayload, _ := json.Marshal(payload)
